@@ -1987,6 +1987,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1997,7 +2017,8 @@ __webpack_require__.r(__webpack_exports__);
         descripcion: ''
       },
       buscar: '',
-      activo: false
+      activo: false,
+      selected: 'Provincia'
     };
   },
   created: function created() {
@@ -2060,7 +2081,7 @@ __webpack_require__.r(__webpack_exports__);
     eliminar: function eliminar(item, index) {
       var _this4 = this;
 
-      var confirmacion = confirm("\xBFEst\xE1 usted seguro de eliminar la leyenda? ".concat(item.nombre));
+      var confirmacion = confirm("\xBFEst\xE1 usted seguro de eliminar la leyenda ".concat(item.nombre, "?"));
 
       if (confirmacion) {
         axios["delete"]("/libros/".concat(item.id)).then(function () {
@@ -37818,27 +37839,69 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.libro.provincia,
-                  expression: "libro.provincia"
-                }
-              ],
-              staticClass: "form-control mb-2",
-              attrs: { type: "text", placeholder: "Provincia" },
-              domProps: { value: _vm.libro.provincia },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.libro.provincia,
+                    expression: "libro.provincia"
                   }
-                  _vm.$set(_vm.libro, "provincia", $event.target.value)
+                ],
+                staticClass: "custom-select mb-2",
+                attrs: { id: "inlineFormCustomSelect" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.libro,
+                      "provincia",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
                 }
-              }
-            }),
+              },
+              [
+                _c("option", { attrs: { disabled: "disabled" } }, [
+                  _vm._v("Provincia")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "San José" } }, [
+                  _vm._v("San José")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Alajuela" } }, [
+                  _vm._v("Alajuela")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Cartago" } }, [
+                  _vm._v("Cartago")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Heredia" } }, [
+                  _vm._v("Heredia")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Guanacaste" } }, [
+                  _vm._v("Guanacaste")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Puntarenas" } }, [
+                  _vm._v("Puntarenas")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Limón" } }, [_vm._v("Limón")])
+              ]
+            ),
             _vm._v(" "),
             _c("textarea", {
               directives: [
@@ -37913,27 +37976,71 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.libro.provincia,
-                  expression: "libro.provincia"
-                }
-              ],
-              staticClass: "form-control mb-2",
-              attrs: { type: "text", placeholder: "Provincia" },
-              domProps: { value: _vm.libro.provincia },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.libro.provincia,
+                    expression: "libro.provincia"
                   }
-                  _vm.$set(_vm.libro, "provincia", $event.target.value)
+                ],
+                staticClass: "custom-select mb-2",
+                attrs: { id: "inlineFormCustomSelect" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.libro,
+                      "provincia",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
                 }
-              }
-            }),
+              },
+              [
+                _c(
+                  "option",
+                  { attrs: { selected: "", value: "", disabled: "disabled" } },
+                  [_vm._v(_vm._s(_vm.selected))]
+                ),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "San José" } }, [
+                  _vm._v("San José")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Alajuela" } }, [
+                  _vm._v("Alajuela")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Cartago" } }, [
+                  _vm._v("Cartago")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Heredia" } }, [
+                  _vm._v("Heredia")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Guanacaste" } }, [
+                  _vm._v("Guanacaste")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Puntarenas" } }, [
+                  _vm._v("Puntarenas")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Limón" } }, [_vm._v("Limón")])
+              ]
+            ),
             _vm._v(" "),
             _c("textarea", {
               directives: [

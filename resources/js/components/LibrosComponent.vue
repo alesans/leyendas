@@ -3,7 +3,17 @@
       <form @submit="editarLibro(libro)" v-if='activo'>
         <h3 class="text-center mb-4">Edición de leyenda</h3>
         <input type="text" placeholder="Nombre" class="form-control mb-2" v-model="libro.nombre">
-        <input type="text" placeholder="Provincia" class="form-control mb-2" v-model="libro.provincia">
+        <!-- <input type="text" placeholder="Provincia" class="form-control mb-2" v-model="libro.provincia"> -->
+        <select class="custom-select mb-2" id="inlineFormCustomSelect" v-model="libro.provincia">
+          <option disabled="disabled">Provincia</option>
+          <option value="San José">San José</option>
+          <option value="Alajuela">Alajuela</option>
+          <option value="Cartago">Cartago</option>
+          <option value="Heredia">Heredia</option>
+          <option value="Guanacaste">Guanacaste</option>
+          <option value="Puntarenas">Puntarenas</option>
+          <option value="Limón">Limón</option>
+        </select> 
         <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Descripción" v-model="libro.descripcion"></textarea>
         <button class="btn form-control mb-2 btn-success" type="submit">Modificar</button>
       </form>
@@ -11,7 +21,17 @@
        <form @submit.prevent="agregar" v-else>
         <h3 class="text-center mb-4">Registro de leyenda</h3>
         <input type="text" placeholder="Nombre" class="form-control mb-2" v-model="libro.nombre">
-        <input type="text" placeholder="Provincia" class="form-control mb-2" v-model="libro.provincia">
+        <!-- <input type="text" placeholder="Provincia" class="form-control mb-2" v-model="libro.provincia"> -->
+         <select class="custom-select mb-2" id="inlineFormCustomSelect" v-model="libro.provincia">
+          <option selected value="" disabled='disabled'>{{selected}}</option>
+          <option value="San José">San José</option>
+          <option value="Alajuela">Alajuela</option>
+          <option value="Cartago">Cartago</option>
+          <option value="Heredia">Heredia</option>
+          <option value="Guanacaste">Guanacaste</option>
+          <option value="Puntarenas">Puntarenas</option>
+          <option value="Limón">Limón</option>
+        </select>                               
         <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Descripción" v-model="libro.descripcion"></textarea>
         <button class="btn form-control mb-2 btn-primary" type="submit">Registrar</button>
       </form>
@@ -49,6 +69,7 @@ export default {
       libro: {nombre: '', provincia: '', descripcion: ''},
       buscar: '',
       activo: false,
+      selected: 'Provincia'
     }
   },
   created() {
@@ -102,7 +123,7 @@ export default {
         })
     },
     eliminar(item,index){
-      const confirmacion = confirm(`¿Está usted seguro de eliminar la leyenda? ${item.nombre}`);
+      const confirmacion = confirm(`¿Está usted seguro de eliminar la leyenda ${item.nombre}?`);
 
       if(confirmacion) {
           axios.delete(`/libros/${item.id}`)
