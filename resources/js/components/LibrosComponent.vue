@@ -3,7 +3,6 @@
       <form @submit="editarLibro(libro)" v-if='activo'>
         <h3 class="text-center mb-4">Edición de leyenda</h3>
         <input type="text" placeholder="Nombre" class="form-control mb-2" v-model="libro.nombre">
-        <!-- <input type="text" placeholder="Provincia" class="form-control mb-2" v-model="libro.provincia"> -->
         <select class="custom-select mb-2" id="inlineFormCustomSelect" v-model="libro.provincia">
           <option disabled="disabled">Provincia</option>
           <option value="San José">San José</option>
@@ -21,7 +20,6 @@
        <form @submit.prevent="agregar" v-else>
         <h3 class="text-center mb-4">Registro de leyenda</h3>
         <input type="text" placeholder="Nombre" class="form-control mb-2" v-model="libro.nombre">
-        <!-- <input type="text" placeholder="Provincia" class="form-control mb-2" v-model="libro.provincia"> -->
          <select class="custom-select mb-2" id="inlineFormCustomSelect" v-model="libro.provincia">
           <option selected value="" disabled='disabled'>{{selected}}</option>
           <option value="San José">San José</option>
